@@ -1,0 +1,55 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Dashboard - Authentication System{% endblock %}
+
+{% block content %}
+<h1>Welcome to Your Dashboard</h1>
+
+<div class="dashboard-grid">
+    <div class="stat-box">
+        <div class="stat-box-value">✓</div>
+        <div class="stat-box-label">Email Verified</div>
+    </div>
+    <div class="stat-box">
+        <div class="stat-box-value">🔒</div>
+        <div class="stat-box-label">Session Timeout: 15 min</div>
+    </div>
+    <div class="stat-box">
+        <div class="stat-box-value">👤</div>
+        <div class="stat-box-label">{{ user.profile.get_role_display }}</div>
+    </div>
+</div>
+
+<div class="dashboard-card">
+    <h3>Account Information</h3>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Role:</strong> {{ user.profile.get_role_display }}</p>
+    <p><strong>Member Since:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
+</div>
+
+<div class="dashboard-card">
+    <h3>Security Information</h3>
+    <p><strong>Email Verified:</strong> <span style="color: #28a745;">✓ Yes</span></p>
+    <p><strong>Session Timeout:</strong> 15 minutes of inactivity</p>
+    <p><strong>Last Login:</strong> {{ user.last_login|date:"F d, Y H:i" }}</p>
+</div>
+
+{% if user.profile.is_admin %}
+<div class="dashboard-card" style="border-left-color: #dc3545;">
+    <h3>Admin Access</h3>
+    <p>You have administrative privileges.</p>
+    <a href="{% url 'accounts:admin_dashboard' %}" class="btn btn-primary">Go to Admin Dashboard</a>
+</div>
+{% endif %}
+
+<div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 5px;">
+    <h3 style="color: #333; margin-bottom: 0.5rem;">Security Reminder</h3>
+    <ul style="color: #666; margin-left: 1.5rem;">
+        <li>Your session will automatically expire after 15 minutes of inactivity</li>
+        <li>Always logout when using a public computer</li>
+        <li>Never share your password with anyone</li>
+        <li>If you suspect unauthorized access, change your password immediately</li>
+    </ul>
+</div>
+{% endblock %}

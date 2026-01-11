@@ -1,0 +1,91 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Home - Authentication System{% endblock %}
+
+{% block content %}
+<h1>Welcome to Authentication System</h1>
+
+<div style="text-align: center; padding: 2rem;">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
+    <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+        A production-ready authentication system with email verification, password reset, and role-based access control.
+    </p>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap;">
+        <a href="{% url 'accounts:signup' %}" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+            Create Account
+        </a>
+        <a href="{% url 'accounts:login' %}" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+            Login
+        </a>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 10px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✉️</div>
+        <h3 style="color: white; margin-bottom: 0.5rem;">Email Verification</h3>
+        <p>Secure verification via email tokens</p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 2rem; border-radius: 10px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+        <h3 style="color: white; margin-bottom: 0.5rem;">Password Reset</h3>
+        <p>Token-based password recovery</p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 2rem; border-radius: 10px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👤</div>
+        <h3 style="color: white; margin-bottom: 0.5rem;">RBAC</h3>
+        <p>Role-based access control</p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 2rem; border-radius: 10px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏱️</div>
+        <h3 style="color: white; margin-bottom: 0.5rem;">Auto Logout</h3>
+        <p>15-minute session timeout</p>
+    </div>
+</div>
+
+<div style="margin-top: 2rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+    <h2 style="color: #333; margin-bottom: 1rem; text-align: center;">Key Features</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🔒 Secure Authentication</h4>
+            <p style="color: #666; margin: 0;">Django's built-in authentication with password hashing</p>
+        </div>
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">📧 Email Verification</h4>
+            <p style="color: #666; margin: 0;">Token-based verification with 24-hour expiry</p>
+        </div>
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🔑 Password Reset</h4>
+            <p style="color: #666; margin: 0;">Secure password recovery via email</p>
+        </div>
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">⏱️ Auto Session Timeout</h4>
+            <p style="color: #666; margin: 0;">Automatic logout after 15 minutes</p>
+        </div>
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">👥 Role Management</h4>
+            <p style="color: #666; margin: 0;">Admin and User roles with route restrictions</p>
+        </div>
+        <div>
+            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🛡️ CSRF Protection</h4>
+            <p style="color: #666; margin: 0;">Built-in CSRF token protection</p>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 2rem; padding: 1.5rem; background: #d1ecf1; border-radius: 5px; border-left: 4px solid #0c5460;">
+    <h3 style="color: #0c5460; margin-top: 0;">ℹ️ Security & Best Practices</h3>
+    <ul style="color: #0c5460; margin-left: 1.5rem;">
+        <li><strong>Password Strength:</strong> Minimum 8 characters with uppercase, lowercase, digit, and special character</li>
+        <li><strong>Session Management:</strong> Sessions automatically expire after 15 minutes of inactivity</li>
+        <li><strong>Email Verification:</strong> Users must verify email before accessing the system</li>
+        <li><strong>Token Security:</strong> Verification and reset tokens expire after 24 hours</li>
+        <li><strong>CSRF Protection:</strong> All forms include CSRF protection</li>
+        <li><strong>Environment Variables:</strong> Sensitive data loaded from .env file</li>
+    </ul>
+</div>
+{% endblock %}

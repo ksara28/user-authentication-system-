@@ -1,0 +1,25 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Verify Email - Authentication System{% endblock %}
+
+{% block content %}
+<h1>Email Verification Required</h1>
+
+<div style="text-align: center; padding: 2rem;">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">📧</div>
+    <p style="font-size: 1.1rem; color: #666; margin-bottom: 1rem;">
+        Your account is active, but we need you to verify your email address to continue.
+    </p>
+    <p style="color: #888; margin-bottom: 2rem;">
+        Please check your inbox for the verification email and click the link to verify your account.
+    </p>
+
+    <div style="background: #fff3cd; padding: 1.5rem; border-radius: 5px; margin-bottom: 1.5rem; border-left: 4px solid #856404;">
+        <p style="color: #856404; margin: 0;">
+            <strong>⚠️ Email verification is required</strong> to access your dashboard and use the system.
+        </p>
+    </div>
+
+    <a href="{% url 'accounts:logout' %}" class="btn btn-secondary">Logout</a>
+</div>
+{% endblock %}

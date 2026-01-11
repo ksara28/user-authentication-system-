@@ -1,0 +1,66 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Admin Dashboard - Authentication System{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div style="background: #fff3cd; padding: 1.5rem; border-radius: 5px; margin-bottom: 2rem; border-left: 4px solid #856404;">
+    <p style="color: #856404; margin: 0;">
+        <strong>🔐 Admin Access:</strong> You have administrative privileges to manage users and system statistics.
+    </p>
+</div>
+
+<div class="dashboard-grid">
+    <div class="stat-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="stat-box-value">{{ total_users }}</div>
+        <div class="stat-box-label">Total Users</div>
+    </div>
+    <div class="stat-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <div class="stat-box-value">{{ verified_users }}</div>
+        <div class="stat-box-label">Email Verified</div>
+    </div>
+    <div class="stat-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+        <div class="stat-box-value">{{ admin_users }}</div>
+        <div class="stat-box-label">Admin Users</div>
+    </div>
+</div>
+
+<div class="dashboard-card" style="border-left-color: #dc3545;">
+    <h3>System Statistics</h3>
+    <p><strong>Total Registered Users:</strong> {{ total_users }}</p>
+    <p><strong>Email Verified Users:</strong> {{ verified_users }}</p>
+    <p><strong>Verification Rate:</strong> 
+        {% if total_users > 0 %}
+        {{ verified_users|floatformat:0 }}% ({{ verified_users }}/{{ total_users }})
+        {% else %}
+        N/A
+        {% endif %}
+    </p>
+    <p><strong>Admin Users:</strong> {{ admin_users }}</p>
+</div>
+
+<div class="dashboard-card">
+    <h3>Admin Features</h3>
+    <ul style="margin-left: 1.5rem; color: #666;">
+        <li>View system statistics and user analytics</li>
+        <li>Monitor email verification rates</li>
+        <li>Manage user roles and permissions</li>
+        <li>View system logs and security events</li>
+    </ul>
+    <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        For full user management, use Django admin panel at <a href="/admin/" style="color: #667eea; text-decoration: none;">/admin/</a>
+    </p>
+</div>
+
+<div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 5px;">
+    <h3 style="color: #333; margin-bottom: 0.5rem;">Security & Configuration</h3>
+    <ul style="color: #666; margin-left: 1.5rem;">
+        <li><strong>Session Timeout:</strong> 15 minutes of inactivity (production-ready)</li>
+        <li><strong>Password Policy:</strong> Minimum 8 characters with complexity requirements</li>
+        <li><strong>Email Verification:</strong> Required for all users before login</li>
+        <li><strong>Token Expiry:</strong> 24 hours for verification and password reset tokens</li>
+        <li><strong>CSRF Protection:</strong> Enabled on all forms</li>
+    </ul>
+</div>
+{% endblock %}

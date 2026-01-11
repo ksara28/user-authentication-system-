@@ -1,0 +1,41 @@
+# Django & Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.dist/
+
+# Environments
+.env
+.env.*
+venv/
+.venv/
+env/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Django specific
+# Database
+/db.sqlite3
+
+# Static & media (keep app-specific static; ignore collected output)
+staticfiles/
+media/
+
+# Logs
+*.log
+
+# Coverage/pytest
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Migrations cache (keep migrations code)
+**/__pycache__/
